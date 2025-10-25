@@ -1,7 +1,5 @@
 let boardWidth = 550; 
 let boardHeight = 768; 
-let backgroundImg = new Image(); 
-backgroundImg.src = "./fall.jpg"; 
 let inputLocked = false; 
 
 document.addEventListener("keydown", handleKeyDown); 
@@ -113,9 +111,6 @@ function update() {
 }
 
 function renderMenu() {
-    if(backgroundImg.complete) {
-        context.drawImage(backgroundImg, 0, 0, boardWidth, boardHeight); 
-    }
 
     if(playButtonImg.complete) {
         context.drawImage(playButtonImg, playButton.x, playButton.y, playButton.width, playButton.height); 
@@ -222,8 +217,8 @@ function resetGame() {
 }
 
 function detectCollision(a, b) {
-    return a.x < b.x + b.width &&
-        a.x + a.width > b.x && 
+    return a.x < b.x + b.width*0.2 &&
+        a.x + a.width*0.2 > b.x && 
         a.y < b.y + b.height &&
         a.y + a.height > b.y;
 }
