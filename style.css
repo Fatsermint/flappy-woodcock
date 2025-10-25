@@ -1,0 +1,46 @@
+body{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+}
+#board{
+    background-image:url("./fall.jpg") ;
+    cursor: default;
+    margin-top: 10vh;
+    margin-left: 5vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+#backround{
+    background-image: url(vecteezy_autumn-background-with-leaves-golden-yellow-with-blank-space_10223864.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    height: 100vh;
+    justify-content: center;
+}
+#backbutton{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+    padding: 2em;
+    background:rgb(255, 136, 0) ;
+    border-radius: 1em;
+    color: rgb(0, 0, 0);
+    text-decoration:none;
+    font-size: 1.67em;
+    outline-width: 10em;
+    outline-color:rgb(0, 0, 0);
+}
+#backbutton::before{
+    content: "";
+    --size: 1.25em;
+    background-image: url(./arrow.png);
+    background-size: var(--size) var(--size);
+    display: inline-block;
+    width: var(--size); 
+    height: var(--size);
+    margin-right: .5em;
+}
