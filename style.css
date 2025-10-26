@@ -45,3 +45,14 @@ body{
     height: var(--size);
     margin-right: .5em;
 }
+#gameText{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+#gameText p {
+    font-size: 2em;
+    width: 15em;
+}
