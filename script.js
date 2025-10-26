@@ -1,7 +1,10 @@
 let boardWidth = 550; 
 let boardHeight = 768; 
 let inputLocked = false; 
-
+var music = new Audio("./music.mp3")
+music.volume = 0.5
+var pointsound = new Audio("./point.mp3")
+var diesound = new Audio("./die.mp3")
 document.addEventListener("keydown", handleKeyDown); 
 
 let GAME_STATE = {
@@ -46,6 +49,7 @@ let pipeWidth = 100;
 let pipeGap = 250; 
 let pipeArray = []; 
 let pipeIntervalId; 
+let dieSoundPlayed = false
 
 function placePipes() {
     createPipes();
@@ -107,11 +111,13 @@ function update() {
         renderGame(); 
     } else if(currentState === GAME_STATE.GAME_OVER) {
         renderGameOver(); 
+        if (! diesound)diesound.play();
+        
+
     }
 }
 
 function renderMenu() {
-
     if(playButtonImg.complete) {
         context.drawImage(playButtonImg, playButton.x, playButton.y, playButton.width, playButton.height); 
     }
@@ -126,8 +132,9 @@ function renderMenu() {
 function renderGame() {
     velocityY += gravity;
     bird.y = Math.max(bird.y + velocityY, 0); 
-    context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height); 
+    context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
 
+    music.play();
     if(bird.y > board.height) {
         currentState = GAME_STATE.GAME_OVER;
     }
@@ -141,6 +148,8 @@ function renderGame() {
         if(!pipe.passed && bird.x > pipe.x + pipe.width) {
             score += 0.5;
             pipe.passed = true;
+            pointsound.volume = 1      
+            pointsound.play(); 
         }
 
         if(detectCollision(bird, pipe)) {
@@ -159,6 +168,7 @@ function renderGame() {
 }
 
 function renderGameOver() {
+    music.pause();   
     if(gameOverImg.complete) {
         let imgWidth = 400; 
         let imgHeight = 80; 
@@ -172,8 +182,11 @@ function renderGameOver() {
         context.font = "45px sans-serif"; 
         context.textAlign = "center"; 
         context.fillText(scoreText, boardWidth / 2, y + imgHeight + 50); 
-
         inputLocked = true; 
+        if (!dieSoundPlayed){
+            diesound.play();
+            dieSoundPlayed = true
+        } 
         setTimeout(() => {
             inputLocked = false;
         }, 500);
@@ -214,6 +227,9 @@ function resetGame() {
     bird.y = birdY;
     pipeArray = []; 
     score = 0;
+    music.load();
+    dieSoundPlayed = false
+
 }
 
 function detectCollision(a, b) {
