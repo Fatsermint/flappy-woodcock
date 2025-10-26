@@ -38,8 +38,8 @@ gameOverImg.src = "./flappy-gameover.png";
 let bird = {
     x: 50,
     y: boardHeight / 2,
-    width: 120,
-    height: 90
+    width: 250,
+    height: 150
 }
 
 let velocityY = 0;
@@ -47,7 +47,7 @@ let velocityX = -2;
 let gravity = 0.5; 
 let birdY = boardHeight / 2; 
 let pipeWidth = 100; 
-let pipeGap = 300; 
+let pipeGap = 325; 
 let pipeArray = []; 
 let pipeIntervalId; 
 let dieSoundPlayed = false
@@ -205,7 +205,7 @@ function handleKeyDown(e) {
             resetGame();
             currentState = GAME_STATE.MENU;
         } else if(currentState === GAME_STATE.PLAYING) {
-            velocityY = -12;
+            velocityY = -10;
         }
     }
 }
