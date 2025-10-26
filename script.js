@@ -1,5 +1,6 @@
 let boardWidth = 550; 
-let boardHeight = 768; 
+let boardHeight = 768;
+let timepipe = 2500 
 let inputLocked = false; 
 var music = new Audio("./music.mp3")
 music.volume = 0.5
@@ -46,7 +47,7 @@ let velocityX = -2;
 let gravity = 0.5; 
 let birdY = boardHeight / 2; 
 let pipeWidth = 100; 
-let pipeGap = 250; 
+let pipeGap = 300; 
 let pipeArray = []; 
 let pipeIntervalId; 
 let dieSoundPlayed = false
@@ -147,6 +148,7 @@ function renderGame() {
 
         if(!pipe.passed && bird.x > pipe.x + pipe.width) {
             score += 0.5;
+
             pipe.passed = true;
             pointsound.volume = 1      
             pointsound.play(); 
@@ -203,7 +205,7 @@ function handleKeyDown(e) {
             resetGame();
             currentState = GAME_STATE.MENU;
         } else if(currentState === GAME_STATE.PLAYING) {
-            velocityY = -8;
+            velocityY = -12;
         }
     }
 }
@@ -214,13 +216,14 @@ function startGame() {
     velocityY = 0; 
     pipeArray = []; 
     score = 0;
-    velocityX = -2;
+    velocityX = -3.5;
+
 
     if(pipeIntervalId) {
         clearInterval(pipeIntervalId);
     }
 
-    pipeIntervalId = setInterval(placePipes, 2500); 
+    pipeIntervalId = setInterval(placePipes, timepipe); 
 }
 
 function resetGame() {
