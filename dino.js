@@ -57,7 +57,7 @@ window.onload = function() {
 function update () {
     requestAnimationFrame(update);
     context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height);
-    for (let i = 0 < cactusArraY.length)
+    //for (let i = 0 < cactusArraY.length)
 }
 
 function placeCactus () {
