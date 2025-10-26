@@ -3,23 +3,23 @@ body{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #flappy{
-    padding-right: 7em;
-    padding-left: 7em;
-    padding-bottom: 17.5em;
-    text-decoration: none;
+    background-image: url("background-image: url(Näyttökuva\ 2025-10-25\ 200405.png);");
+    margin-right: 69em;
     margin-left: 25vh;
-    font-size: 3.5vh;
     border-radius: 1em;
     outline-width: 1.67vh;
     outline-color: rgb(109, 105, 105);
     outline-style:solid;
-    color: rgb(0, 4, 255);
-    background-image: url("fall.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 
 #h1{
     text-align: center;
     font-size: 5em;
+}
+#flappytext{
+    color: rgb(0, 4, 255);
+    font-size: 3.5vh;
+    text-decoration: none;
+    text-align: right;
 }
