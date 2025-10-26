@@ -47,7 +47,7 @@ let velocityX = -2;
 let gravity = 0.5; 
 let birdY = boardHeight / 2; 
 let pipeWidth = 100; 
-let pipeGap = 325; 
+let pipeGap = 360; 
 let pipeArray = []; 
 let pipeIntervalId; 
 let dieSoundPlayed = false
